@@ -1,0 +1,64 @@
+%Заместо PDFLATEX, используется XeTex, просто для тестирования.
+\documentclass[a4paper,14pt]{extreport}
+%Xetex
+\usepackage{polyglossia}
+\setdefaultlanguage[spelling=modern]{russian}
+\setotherlanguage{english}
+
+\setmainfont{Times New Roman}%CMU Serif
+\setsansfont{Times New Roman}%CMU Sans Serif
+\setmonofont{Times New Roman}%CMU Typewriter Text
+
+\usepackage[russian]{hyperref}
+
+%
+%\setmathfont{font/latinmodern-math.otf}
+%Магия для поялвения кирилицы в формулах
+\DeclareSymbolFont{cyrletters}{\encodingdefault}{\familydefault}{m}{it}
+\newcommand{\makecyrmathletter}[1]{%
+	\begingroup\lccode`a=#1\lowercase{\endgroup
+		\Umathcode`a}="0 \csname symcyrletters\endcsname\space #1
+}
+\count255="409
+\loop\ifnum\count255<"44F
+\advance\count255 by 1
+\makecyrmathletter{\count255}
+\repeat
+%Xetex
+
+%\documentclass[a4paper,14pt]{report} %размер бумаги устанавливаем А4, шрифт 12пунктов
+\renewcommand{\baselinestretch}{1.5} %1,5 междустрочный интервал
+\usepackage{ucs}
+%\usepackage[T2A]{fontenc}
+%\usepackage[utf8x]{inputenc} % Включаем поддержку UTF8
+%\usepackage{times} % Шрифт Times New Roman
+\usepackage[small]{titlesec} % чуть уменьшаем размер заголовков глав и разделов
+%\usepackage[english,russian]{babel}%используем русский и английский языки с переносами
+\usepackage{amssymb,amsfonts,amsmath,mathtext,cite,enumerate,float}
+\usepackage{indentfirst} %Включаем первый отступ для абзаца
+\usepackage{geometry} % Меняем поля страницы
+\geometry{left=2cm}% левое поле
+\geometry{right=1.5cm}% правое поле
+\geometry{top=1cm}% верхнее поле
+\geometry{bottom=2cm}% нижнее поле
+\usepackage[final]{graphicx}
+\graphicspath{{images/}}%путь к рисункам
+\RequirePackage{caption}
+\DeclareCaptionLabelSeparator{defffis}{ -- }
+\captionsetup{justification=centering,labelsep=defffis}
+\renewcommand{\theenumi}{\arabic{enumi}}% Меняем везде перечисления на цифра.цифра
+\renewcommand{\labelenumi}{\arabic{enumi}}% Меняем везде перечисления на цифра.цифра
+\renewcommand{\theenumii}{.\arabic{enumii}}% Меняем везде перечисления на цифра.цифра
+\renewcommand{\labelenumii}{\arabic{enumi}.\arabic{enumii}.}% Меняем везде перечисления на цифра.цифра
+\renewcommand{\theenumiii}{.\arabic{enumiii}}% Меняем везде перечисления на цифра.цифра
+\renewcommand{\labelenumiii}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}.}% Меняем везде перечисления на цифра.цифра
+\usepackage{xcolor}	%цветовые настройки гиперссылок
+\usepackage{hyperref} %генерация гиперссылок
+% Цвета для гиперссылок
+\definecolor{linkcolor}{HTML}{799B03} % цвет ссылок
+\definecolor{urlcolor}{HTML}{799B03} % цвет гиперссылок
+
+\hypersetup{pdfstartview=FitH,  linkcolor=linkcolor,urlcolor=urlcolor, colorlinks=true}
+%%Для кирилицы в формулах
+\usepackage{unicode-math} 
+\setmathfont{font/xits-math.otf}

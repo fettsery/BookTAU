@@ -1,0 +1,49 @@
+%подсказки по LaTeX http://mydebianblog.blogspot.ru/2008/11/latex.html] 
+\documentclass[a4paper,14pt]{extreport}
+
+%\documentclass[a4paper,14pt]{report} %размер бумаги устанавливаем А4, шрифт 12пунктов
+\renewcommand{\baselinestretch}{1.5} %1,5 междустрочный интервал
+\usepackage{ucs} %Зачем этот пакет, если уже utf подключен 
+
+%%Перенес по причине не работы русского текста в математическом режиме
+\usepackage{xcolor}	%цветовые настройки гиперссылок
+\usepackage{hyperref} %генерация гиперссылок
+% Цвета для гиперссылок
+\definecolor{linkcolor}{HTML}{799B03} % цвет ссылок
+\definecolor{urlcolor}{HTML}{799B03} % цвет гиперссылок
+\hypersetup{pdfstartview=FitH,  linkcolor=linkcolor,urlcolor=urlcolor, colorlinks=true}
+%Русские символы в математическом режиме
+\usepackage[warn]{mathtext}   
+\usepackage[T2A]{fontenc}
+\usepackage[utf8x]{inputenc} % Включаем поддержку UTF8
+\usepackage{times} % Шрифт Times New Roman
+\usepackage[small]{titlesec} % чуть уменьшаем размер заголовков глав и разделов
+\usepackage[english, russian]{babel}%используем русский и английский языки с переносами
+
+%%Работа с математическими пакетами
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{cite}
+\usepackage{enumerate}
+\usepackage{float}
+
+\usepackage{indentfirst} %Включаем первый отступ для абзаца
+\usepackage{geometry} % Меняем поля страницы
+	\geometry{left=2cm}% левое поле
+	\geometry{right=1.5cm}% правое поле
+	\geometry{top=1cm}% верхнее поле
+	\geometry{bottom=2cm}% нижнее поле
+
+\usepackage[final]{graphicx}
+\graphicspath{{images/}}%путь к рисункам
+\RequirePackage{caption}
+	\DeclareCaptionLabelSeparator{defffis}{ -- }
+	\captionsetup{justification=centering,labelsep=defffis}
+	\renewcommand{\theenumi}{\arabic{enumi}}% Меняем везде перечисления на цифра.цифра
+	\renewcommand{\labelenumi}{\arabic{enumi}}% Меняем везде перечисления на цифра.цифра
+	\renewcommand{\theenumii}{.\arabic{enumii}}% Меняем везде перечисления на цифра.цифра
+	\renewcommand{\labelenumii}{\arabic{enumi}.\arabic{enumii}.}% Меняем везде перечисления на цифра.цифра
+	\renewcommand{\theenumiii}{.\arabic{enumiii}}% Меняем везде перечисления на цифра.цифра
+	\renewcommand{\labelenumiii}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}.}% Меняем везде перечисления на цифра.цифра
+
