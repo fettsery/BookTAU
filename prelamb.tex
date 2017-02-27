@@ -13,6 +13,7 @@
 \definecolor{urlcolor}{HTML}{799B03} % цвет гиперссылок
 \hypersetup{pdfstartview=FitH,  linkcolor=linkcolor,urlcolor=urlcolor, colorlinks=true}
 %Русские символы в математическом режиме
+%\usepackage[warn]{mathtext}   
 \usepackage[warn]{mathtext}   
 \usepackage[T2A]{fontenc}
 \usepackage[utf8x]{inputenc} % Включаем поддержку UTF8
@@ -22,6 +23,12 @@
 
 %%Работа с математическими пакетами
 \usepackage{amsmath}
+
+%Для вида (2.1.1)
+\numberwithin{equation}{section}
+%%Понятия зачем это
+\newcommand\normalsubformula[1]{\text{\mathversion{normal}$#1$}}
+
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{cite}
