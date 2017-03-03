@@ -1283,14 +1283,14 @@ x_i(t)=\varphi _{i,1}(t,t_0)x_1(t_0)+\ldots +\varphi _{i,j}(t,t_0)x_j(t_0)+\ldot
 
 
 \begin{equation*}
-Q(A)=\overset t{\underset{t_0}{\int }}A(τ)\mathit{dτ}.
+Q(A)=\overset t{\underset{t_0}{\int }}A(\tau )\mathit{d\tau }.
 \end{equation*}
 
 		Для того чтобы получить этот результат, проинтегрируем дифференциальное уравнение (2.3.1):
 
 
 
-		\ \  $\vec x(t)=\vec x(t_0)+\overset t{\underset{t_0}{\int }}A(τ_1)\vec x(τ_1)\mathit{dτ}_1$.
+		\ \  $\vec x(t)=\vec x(t_0)+\overset t{\underset{t_0}{\int }}A(\tau _1)\vec x(\tau _1)\mathit{d\tau }_1$.
 
 
 
@@ -1298,19 +1298,19 @@ Q(A)=\overset t{\underset{t_0}{\int }}A(τ)\mathit{dτ}.
 
 
 \begin{equation*}
-\vec x(τ_1)=\vec x(t_0)+\overset{τ_1}{\underset{t_0}{\int }}A(τ_2)\vec x(τ_2)\mathit{dτ}_2.
+\vec x(\tau _1)=\vec x(t_0)+\overset{\tau _1}{\underset{t_0}{\int }}A(\tau _2)\vec x(\tau _2)\mathit{d\tau }_2.
 \end{equation*}
 
 		Тогда получим
 
 
 \begin{equation*}
-\begin{matrix}\vec x(t)=\vec x(t_0)+\overset t{\underset{t_0}{\int }}A(τ_1)\mathit{dτ}_1\vec x(t_0)+\overset
-t{\underset{t_0}{\int }}A(τ_1)\overset{τ_1}{\underset{t_0}{\int }}A(τ_2)\mathit{dτ}_2\mathit{dτ}_1\vec
-x(t_0)+\hfill\null \\+\overset t{\underset{t_0}{\int }}A(τ_1)\overset{τ_1}{\underset{t_0}{\int
-}}A(τ_2)\overset{τ_2}{\underset{t_0}{\int }}A(τ_3)d(τ_3)d(τ_2)d(τ_1)\vec x(t_0)+...=\hfill\null \\=\{E+\overset
-t{\underset{t_0}{\int }}A(τ_1)\mathit{dτ}_1+\overset t{\underset{t_0}{\int }}A(τ_1)\overset{τ_1}{\underset{t_0}{\int
-}}A(τ_2)\mathit{dτ}_2\mathit{dτ}_1+...\}\vec x(t_0)\hfill\null \end{matrix}\;.\hfill 
+\begin{matrix}\vec x(t)=\vec x(t_0)+\overset t{\underset{t_0}{\int }}A(\tau _1)\mathit{d\tau }_1\vec x(t_0)+\overset
+t{\underset{t_0}{\int }}A(\tau _1)\overset{\tau _1}{\underset{t_0}{\int }}A(\tau _2)\mathit{d\tau }_2\mathit{d\tau }_1\vec
+x(t_0)+\hfill\null \\+\overset t{\underset{t_0}{\int }}A(\tau _1)\overset{\tau _1}{\underset{t_0}{\int
+}}A(\tau _2)\overset{\tau _2}{\underset{t_0}{\int }}A(\tau _3)d(\tau _3)d(\tau _2)d(\tau _1)\vec x(t_0)+...=\hfill\null \\=\{E+\overset
+t{\underset{t_0}{\int }}A(\tau _1)\mathit{d\tau }_1+\overset t{\underset{t_0}{\int }}A(\tau _1)\overset{\tau _1}{\underset{t_0}{\int
+}}A(\tau _2)\mathit{d\tau }_2\mathit{d\tau }_1+...\}\vec x(t_0)\hfill\null \end{matrix}\;.\hfill 
 \end{equation*}
 
 		Если объект – стационарный и матрица А состоит из постоянных и не зависящих от времени элементов, то матрициант матрицы
@@ -1437,7 +1437,7 @@ t{\underset{t_0}{\int }}A(τ_1)\mathit{dτ}_1+\overset t{\underset{t_0}{\int }}A
 
 
 
-		\ \  $\vec z(t)=\vec z(t_0)+\overset t{\underset{t_0}{\int }}\Phi (t_0,τ)B(τ)\cdot \vec u(τ)\mathit{dτ}$.
+		\ \  $\vec z(t)=\vec z(t_0)+\overset t{\underset{t_0}{\int }}\Phi (t_0,\tau )B(\tau )\cdot \vec u(\tau )\mathit{d\tau }$.
 
 
 
@@ -1454,7 +1454,7 @@ t{\underset{t_0}{\int }}A(τ_1)\mathit{dτ}_1+\overset t{\underset{t_0}{\int }}A
 
 
 
-		\ \  $\vec x(t)=\Phi (t,t_0)\cdot \vec x(t_0)+\overset t{\underset{t_0}{\int }}\Phi (t,τ)B(τ)\vec u(τ)\mathit{dτ}$.\ \ (2.3.19)
+		\ \  $\vec x(t)=\Phi (t,t_0)\cdot \vec x(t_0)+\overset t{\underset{t_0}{\int }}\Phi (t,\tau )B(\tau )\vec u(\tau )\mathit{d\tau }$.\ \ (2.3.19)
 
 
 
@@ -1500,7 +1500,7 @@ t{\underset{t_0}{\int }}A(τ_1)\mathit{dτ}_1+\overset t{\underset{t_0}{\int }}A
 
 
 
-		\ \  $\varphi _A(\lambda )=|\mathit{\lambda E}-A|=\lambda ^n+α_1\lambda ^{n-1}+α_2\lambda ^{n-2}+\ldots +α_{n-1}\lambda ^1+α_n$.\ \ (2.4.3)
+		\ \  $\varphi _A(\lambda )=|\mathit{\lambda E}-A|=\lambda ^n+\alpha _1\lambda ^{n-1}+\alpha _2\lambda ^{n-2}+\ldots +\alpha _{n-1}\lambda ^1+\alpha _n$.\ \ (2.4.3)
 
 
 
@@ -1643,8 +1643,8 @@ I(\lambda _1)=\left[\begin{matrix}0&0&1\\0&0&2\\0&0&2\end{matrix}\right];\;\;\;I
 
 
 \begin{equation*}
-\begin{matrix}A_1=A;\ \ \ α_1=-\normalsubformula{\text{SpA}}_1;\ \ \ I_1=A_1+α_1E;\hfill\null
-\\A_2=\normalsubformula{\text{AI}}_1;\ \ α_2=-\frac 1 2\normalsubformula{\text{SpA}}_2;\ \ I_2=A_2+α_2E;\hfill\null
+\begin{matrix}A_1=A;\ \ \ \alpha _1=-\normalsubformula{\text{SpA}}_1;\ \ \ I_1=A_1+\alpha _1E;\hfill\null
+\\A_2=\normalsubformula{\text{AI}}_1;\ \ \alpha _2=-\frac 1 2\normalsubformula{\text{SpA}}_2;\ \ I_2=A_2+\alpha _2E;\hfill\null
 \end{matrix}\hfill 
 \end{equation*}
 
@@ -1652,10 +1652,10 @@ I(\lambda _1)=\left[\begin{matrix}0&0&1\\0&0&2\\0&0&2\end{matrix}\right];\;\;\;I
 
 
 \begin{equation*}
-\begin{matrix}A_{n-1}=\normalsubformula{\text{AI}}_{n-2};\ \ \ α_{n-1}=-\frac
-1{n-1}\normalsubformula{\text{SpA}}_{n-1};\ \ \ I_{n-1}=A_{n-1}+α_{n-1}E;\hfill\null
-\\A_n=\normalsubformula{\text{AI}}_{n-1};\ \ α_n=-\frac 1
-n\normalsubformula{\text{SpA}}_n;\ \ I_n=A_n+α_nE=0.\hfill\null \end{matrix}\hfill 
+\begin{matrix}A_{n-1}=\normalsubformula{\text{AI}}_{n-2};\ \ \ \alpha _{n-1}=-\frac
+1{n-1}\normalsubformula{\text{SpA}}_{n-1};\ \ \ I_{n-1}=A_{n-1}+\alpha _{n-1}E;\hfill\null
+\\A_n=\normalsubformula{\text{AI}}_{n-1};\ \ \alpha _n=-\frac 1
+n\normalsubformula{\text{SpA}}_n;\ \ I_n=A_n+\alpha _nE=0.\hfill\null \end{matrix}\hfill 
 \end{equation*}
 
 		Здесь через  $\normalsubformula{\text{SpA}}$ обозначен след матрицы  $A$, то есть сумма ее диагональных элементов
@@ -1683,14 +1683,14 @@ n\normalsubformula{\text{SpA}}_n;\ \ I_n=A_n+α_nE=0.\hfill\null \end{matrix}\hf
 
 
 \begin{equation*}
-A_n=-α_nE,
+A_n=-\alpha _nE,
 \end{equation*}
 
 		получаем
 
 
 
-		\ \  $A^{-1}=-\frac 1{α_n}I_{n-1}$.\ \ (2.4.6)
+		\ \  $A^{-1}=-\frac 1{\alpha _n}I_{n-1}$.\ \ (2.4.6)
 
 
 
@@ -1702,7 +1702,7 @@ A_n=-α_nE,
 
 
 
-		В вырожденном случае  $α_n=0$. Иллюстрацией этого может служить объект, структурная схема которого приведена на рис.2.9.
+		В вырожденном случае  $\alpha _n=0$. Иллюстрацией этого может служить объект, структурная схема которого приведена на рис.2.9.
 
 
 {\centering  \includegraphics[width=12.356cm,height=4.339cm]{1-img018.png} \par}
@@ -1827,9 +1827,9 @@ A_n=-α_nE,
 
 
 %TODO понять что тут не так 
-\begin{equation}\label{key}
-		\vec d_i^T\vec v_i\neq 0\;\;\;\;$ для \  $i=1\;,\;\;2\;,\;\;...\;,\;\;n.\ \ (2.4.13)
-\end{equation}
+%\begin{equation}\label{key}
+%		\vec d_i^T\vec v_i\neq 0\;\;\;\;$ для \  $i=1\;,\;\;2\;,\;\;...\;,\;\;n.\ \ (2.4.13)
+%\end{equation}
 
 
 
@@ -1858,17 +1858,17 @@ A_n=-α_nE,
 
 
 \begin{equation}\label{eq:vectormatrixA}
-	\overset 2{\underset{i=1}{\sum }}γ_i\vec v_i=0,  (2.4.15)
+	\overset 2{\underset{i=1}{\sum }}\gamma_i\vec v_i=0,  (2.4.15)
 \end{equation}
 
 
 
-		где ни один из коэффициентов  $γ_1$ и  $γ_2$ не равен нулю. Умножив это уравнение слева на  $A$, получим
+		где ни один из коэффициентов  $\gamma_1$ и  $\gamma_2$ не равен нулю. Умножив это уравнение слева на  $A$, получим
 
 
 
 \begin{equation}\label{key}
-	\overset 2{\underset{i=1}{\sum }}γ_i\lambda _i\vec v_i=0.  (2.4.16)
+	\overset 2{\underset{i=1}{\sum }}\gamma_i\lambda _i\vec v_i=0.  (2.4.16)
 \end{equation}
 
 
@@ -1878,7 +1878,7 @@ A_n=-α_nE,
 
 
 	\begin{equation}\label{key}
-		\overset 2{\underset{i=1}{\sum }}γ_i\lambda _2\vec v_i=0.  (2.4.17)
+		\overset 2{\underset{i=1}{\sum }}\gamma_i\lambda _2\vec v_i=0.  (2.4.17)
 	\end{equation}
 
 
@@ -1888,12 +1888,12 @@ A_n=-α_nE,
 
 
 \begin{equation*}\label{key}
-		\ \  γ_1(\lambda _1-\lambda _2)\vec v_1=0.
+		\ \  \gamma_1(\lambda _1-\lambda _2)\vec v_1=0.
 \end{equation*}
 
 
 
-		Из того, что  $\lambda _1\neq \lambda _2$ и  $γ_1\neq 0$, следует  $\vec v_1=0$, чего не может быть, следовательно, первые два
+		Из того, что  $\lambda _1\neq \lambda _2$ и  $\gamma_1\neq 0$, следует  $\vec v_1=0$, чего не может быть, следовательно, первые два
 		собственных вектора не могут быть линейно зависимыми.
 
 
@@ -1903,7 +1903,7 @@ A_n=-α_nE,
 
 
 \begin{equation*}\label{key}
-		\ \  \overset r{\underset{i=1}{\sum }}γ_i\vec v_i=0,\ γ_i\neq 0;\ i=1,2,\;\ldots \;,\;r.\ \ 
+		\ \  \overset r{\underset{i=1}{\sum }}\gamma_i\vec v_i=0,\ \gamma_i\neq 0;\ i=1,2,\;\ldots \;,\;r.\ \ 
 \end{equation*}
 
 
@@ -1912,7 +1912,7 @@ A_n=-α_nE,
 
 
 
-		\ \  $\overset r{\underset{i=1}{\sum }}γ_i\lambda _i\vec v_i=0$.  (2.4.18)
+		\ \  $\overset r{\underset{i=1}{\sum }}\gamma_i\lambda _i\vec v_i=0$.  (2.4.18)
 
 
 
@@ -1920,15 +1920,15 @@ A_n=-α_nE,
 
 
 
-		\ \  $\overset r{\underset{i=1}{\sum }}γ_i\lambda _r\vec v_i=0$.  (2.4.19)
+		\ \  $\overset r{\underset{i=1}{\sum }}\gamma_i\lambda _r\vec v_i=0$.  (2.4.19)
 
 
 
 		Вычтем (2.4.19) из (2.4.18) и в результате будем иметь
 
+$ \gamma $
 
-
-		\ \  $\overset{r-1}{\underset{i=1}{\sum }}γ_i(\lambda _i-\lambda _r)\vec v_i=0$.
+		\ \  $\overset{r-1}{\underset{i=1}{\sum }}\gamma_i(\lambda _i-\lambda _r)\vec v_i=0$.
 
 
 
@@ -1992,10 +1992,10 @@ A\vec v_i=\lambda _i\vec v_i,_{}^{}i=1,2,...,n
 =\left[\begin{matrix}v_{11}&v_{12}&\cdots &v_{1n}\\v_{21}&v_{22}&\cdots &v_{2n}\\\cdots &\cdots &\cdots &\cdots
 \\v_{\mathit{n1}}&v_{\mathit{n2}}&\cdots &v_{\normalsubformula{\text{nn}}}\end{matrix}\right]\cdot
 \left[\begin{matrix}\lambda _1&0&\cdots &0\\0&\lambda _2&\cdots &0\\\cdots &\cdots &\cdots &\cdots \\0&0&\cdots
-&\lambda _n\end{matrix}\right]=\mathit{VΛ}\;,
+&\lambda _n\end{matrix}\right]=\mathit{V\Lambda }\;,
 \end{equation*}
 
-		где  $Λ$- диагональная матрица собственных чисел.
+		где  $\Lambda $- диагональная матрица собственных чисел.
 
 
 
@@ -2003,7 +2003,7 @@ A\vec v_i=\lambda _i\vec v_i,_{}^{}i=1,2,...,n
 
 
 
-		\ \  $\text{AV}=\mathit{VΛ}$,
+		\ \  $\text{AV}=\mathit{V\Lambda }$,
 
 
 
@@ -2011,7 +2011,7 @@ A\vec v_i=\lambda _i\vec v_i,_{}^{}i=1,2,...,n
 
 
 
-		\ \  $A=\mathit{VΛD}^T$.\ \ (2.4.22)
+		\ \  $A=\mathit{V\Lambda D}^T$.\ \ (2.4.22)
 
 
 
@@ -2030,7 +2030,7 @@ A\vec v_i=\lambda _i\vec v_i,_{}^{}i=1,2,...,n
 
 
 
-		\ \  $Λ=V^{-1}\normalsubformula{\text{AV}}=D^T\normalsubformula{\text{AV}}$.\ \ (2.4.23)
+		\ \  $\Lambda =V^{-1}\normalsubformula{\text{AV}}=D^T\normalsubformula{\text{AV}}$.\ \ (2.4.23)
 
 
 
@@ -2038,14 +2038,14 @@ A\vec v_i=\lambda _i\vec v_i,_{}^{}i=1,2,...,n
 
 
 \begin{equation*}
-Λ^2=V^{-1}\normalsubformula{\text{AVV}}^{-1}\normalsubformula{\text{AV}}=V^{-1}A^2V
+\Lambda ^2=V^{-1}\normalsubformula{\text{AVV}}^{-1}\normalsubformula{\text{AV}}=V^{-1}A^2V
 \end{equation*}
 
 		  .....................................................
 
 
 
-		\ \  $Λ^l=V^{-1}A^lV$ или  $A^l=\mathit{VΛ}^lV^{-1}$.
+		\ \  $\Lambda ^l=V^{-1}A^lV$ или  $A^l=\mathit{V\Lambda }^lV^{-1}$.
 
 
 
@@ -2060,7 +2060,7 @@ N(A)=A^l+C_1A^{l-1}+\ldots +C_{l-1}A+C_lE,
 
 
 \begin{equation*}
-N(A)=V\left\{Λ^l+C_1Λ^{l-1}+\ldots +C_{l-1}Λ+C_lE\right\}V^{-1},
+N(A)=V\left\{\Lambda ^l+C_1\Lambda ^{l-1}+\ldots +C_{l-1}\Lambda +C_lE\right\}V^{-1},
 \end{equation*}
 
 		или
@@ -2157,9 +2157,8 @@ I^d(\lambda _3)=\left[\begin{matrix}2&0&0\\-2&0&0\\1&0&0\end{matrix}\right]\;.
 		Рассчитаем левые собственные векторы. Учтем при этом (2.4.14). Таким образом, для первого собственного вектора  $\vec
 		d_1$ должны выполняться условия
 
-
-
-		\ \  $\vec d_1^T=ν_1\left[\begin{matrix}0&0&1\end{matrix}\right]\;,\;\;\;\;\;\vec d_1^T\vec v_1=2ν_1=1$,
+%$ \upsilon \varupsilon$
+%		\ \  $\vec d_1^T=vν_1\left[\begin{matrix}0&0&1\end{matrix}\right]\;,\;\;\;\;\;\vec d_1^T\vec v_1=2ν_1=1$,
 
 
 
@@ -2167,7 +2166,8 @@ I^d(\lambda _3)=\left[\begin{matrix}2&0&0\\-2&0&0\\1&0&0\end{matrix}\right]\;.
 
 
 
-		\ \  $ν_1=\frac 1 2$ \ \ \ и \ \ \  $\vec d_1^T=\left[\begin{matrix}0&0&0.5\end{matrix}\right]$.
+%		\ \  $ν_1=\frac 1 2$ \ \ \ и \ \ \  
+%		$\vec d_1^T=\left[\begin{matrix}0&0&0.5\end{matrix}\right]$.
 
 
 
