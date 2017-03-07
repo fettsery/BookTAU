@@ -95,8 +95,8 @@
 
 \begin{gather}
 \begin{split}
-	\dot{\vec{x}}_H(t) = A_H\vec{x}_H(t)+\vec{b}_Hu(t);\\
-	y(t)=C_H\vec{x}_H(t),
+	&\dot{\vec{x}}_H(t) = A_H\vec{x}_H(t)+\vec{b}_Hu(t);\\
+	&y(t)=C_H\vec{x}_H(t),
 \end{split}
 \end{gather}
 каждая координата вектора состояния которого доступна для измерения.
@@ -153,8 +153,8 @@ $k^v$ – коэффициент по командному сигналу.
 Умножив уравнение (3.9.9) слева на $U_H^{-1}$, будем иметь
 \begin{gather}
 \begin{split}
-	\dot{\vec{x}}_U(t)=A_U\vec{x}_U(t)+\vec{b}_Uu(t);\\
-	y(t) = C_U\vec{x}_U(t),
+	&\dot{\vec{x}}_U(t)=A_U\vec{x}_U(t)+\vec{b}_Uu(t);\\
+	&y(t) = C_U\vec{x}_U(t),
 \end{split}
 \end{gather}
 где $A_U$ $\vec{b}_U$ и $C_U$ - соответствующие матрицы в УКП.
@@ -228,3 +228,206 @@ $k^v$ – коэффициент по командному сигналу.
 	k^v=\dfrac{\gamma_n}{c_U1}
 \end{equation}
 \newpage
+
+\section{Синтез управления в многомерной системе. Задача разделения каналов}
+В предыдущих разделах, посвящённых синтезу, рассматривались объекты со скалярным управлением (входом) и скалярным выходом. На практике встречаются и более сложные объекты. Один из них был упомянут в разделе 2.2. Это смесительный бак, у него две входные величины (два входных потока с различными концентрациями растворённого вещества) и две выходные (концентрация и расход выходного потока). В качестве другого примера может быть взят объект, связанный с перемоткой некоторой полосы с одного рулона на другой. Для этого объекта выходные переменные – это натяжение и линейная скорость перемотки; входные – напряжения или токи приводных двигателей моталки и разматывателя. Наконец, самолёт. В качестве выходных переменных могут выступать углы тангажа, курса и крена; в качестве входных, управляющих - угловые положения руля высоты, руля направления и элеронов.
+
+Как правило, в таких объектах каждая выходная величина зависит от всех входных. В то же время при синтезе управления такими объектами часто требуется обеспечить не только заданные динамические и статические свойства системы, но и независимое управление по каждой из выходных переменных.
+
+Пусть уравнения объекта имеют вид
+\begin{equation}
+	\dot{\vec{x}}(t)=A\vec{x}(t)+B\vec{u}(t);
+\end{equation}
+\begin{equation}
+	\dot{\vec{y}}(t)=C\vec{x}(t),
+\end{equation}
+где размерность вектора состояния [$n\times1$] , вектор управления и век-тор выхода имеют одинаковую размерность [$p\times1$]. Такую же размер-ность имеет вектор командного сигнала $\vec{v}$, поступающий на вход системы. 
+
+Требуется синтезировать управление $\vec{u}$ такое, чтобы:
+\begin{enumerate}
+\renewcommand\labelenumi{\theenumi)}
+\item $i$–я составляющая вектора выхода $y_i$ зависела только от $i$–й составляющей командного сигнала $v_i$;
+\item по каждому из каналов была обеспечена заданная динамика, иными словами, передаточная функция $W_{v_i,y_i}(p)=\dfrac{Y_i(p)}{V_i(p)}$, имеющая заданные полюсы;
+\item для каждого из каналов был обеспечен заданный статический коэф-фициент передачи.
+\end{enumerate}
+
+\subsection{Разделение исходного объекта на подсистемы интеграторов}
+Представим (3.10.2) в виде
+\begin{equation*}
+	\vec{y}=C\vec{x}= 
+	\begin{bmatrix}
+	    C_1  \\
+	    C_2  \\
+	    \vdots \\
+	    C_p
+	\end{bmatrix}
+	\vec{x},
+\end{equation*}
+где $C_i$ - строки матрицы $C$. Тогда $i$-я координата вектора выхода
+\begin{equation*}
+	y_i=C_i\vec{x}
+\end{equation*}
+
+Рассмотрим процедуру многократного дифференцирования координат вектора выхода:
+\begin{gather}
+\begin{split}
+	&y_i^{\prime}=C_i\dot{\vec{x}}=C_iA\vec{x}+C_iB\vec{u};\\
+	&y_i^{\prime\prime}=C_iA^2\vec{x}+C_iAB\vec{u}+C_iB\vec{u}^{\prime};\\
+	&y_i^{(3)}=C_iA^3\vec{x}+C_iA^2B\vec{u}+C_iAB\vec{u}^{(1)}+C_iB\vec{u}^{(2)};\\
+	&\dots\dots\dots\dots\dots\dots\dots\dots\\
+	&y_i^{(m)}=C_iA^m\vec{x}+C_iA^{m-1}B\vec{u}+C_iA^{m-2}B\vec{u}^{(1)}+\dots+C_iB\vec{u}^{(m-1)}.
+\end{split}
+\end{gather}
+Сократим запись:
+\begin{equation}
+	y_i^{(m)}=C_iA^m\vec{x}+C_iA^{m-1}B\vec{u}+\sum_{v=1}^{m-1}C_iA^{m-1-v}B\vec{u}^{(v)}.
+\end{equation}
+
+Для каждой координаты найдем максимальное число дифференцирований, при котором еще не появляется производная вектора $\vec{u}$, то есть найдем такие числа $m_i$, что
+\begin{equation*}
+	C_iA^{m_i-1}B\neq0 \text{ и } C_iA^{m_i-2}B=0.
+\end{equation*}
+Таким образом, получим систему уравнений:
+\begin{gather}
+\begin{split}
+	&y_1^{(m_1)}=C_1A^{m_1}\vec{x}+C_1A^{m_1-1}B\vec{u};\\
+	&y_2^{(m_2)}=C_2A^{m_2}\vec{x}+C_2A^{m_2-1}B\vec{u};\\
+	&\dots\dots\dots\dots\dots\dots\dots\dots\\
+	&y_p^{(m_p)}=C_pA^{m_p}\vec{x}+C_pA^{m_p-1}B\vec{u};\\
+\end{split}
+\end{gather}
+Запишем эту систему равенств в  векторно-матричном  виде:
+\begin{equation}
+	\begin{bmatrix}
+	    y_1^{(m_1)}\\
+	    y_2^{(m_2)}\\
+	    \vdots \\
+	    y_1^{(m_p)}\\
+	\end{bmatrix}=
+	\begin{bmatrix}
+	    C_1A^{m_1}\\
+	    C_2A^{m_2}\\
+	    \vdots \\
+	    C_1A^{m_p}\\
+	\end{bmatrix}\vec{x}+
+	\begin{bmatrix}
+	    C_1A^{m_1-1}\\
+	    C_2A^{m_2-1}\\
+	    \vdots \\
+	    C_1A^{m_p-1}\\
+	\end{bmatrix}B\vec{u}=-F_*\vec{x}+B_*\vec{u}.
+\end{equation}
+Обозначим
+\begin{equation}
+	\vec{q}=
+	\begin{bmatrix}
+	    y_1^{(m_1)}\\
+	    y_2^{(m_2)}\\
+	    \vdots \\
+	    y_1^{(m_p)}\\
+	\end{bmatrix}
+\end{equation}
+и
+\begin{equation}
+	F_*=-
+	\begin{bmatrix}
+	    C_1A^{m_1}\\
+	    C_2A^{m_2}\\
+	    \vdots \\
+	    C_1A^{m_p}\\
+	\end{bmatrix};
+	B_*=
+	\begin{bmatrix}
+	    C_1A^{m_1-1}\\
+	    C_2A^{m_2-1}\\
+	    \vdots \\
+	    C_1A^{m_p-1}\\
+	\end{bmatrix}B;
+\end{equation}
+Тогда (3.10.6) можно переписать в виде
+\begin{equation}
+	\vec{q}=-F_*\vec{x}+B_*\vec{u}.
+\end{equation}
+Если задача разделения каналов имеет решение, то матрица $B_*$ не вырождена и
+\begin{equation}
+	\vec{u}=B_*^{-1}\vec{q}+B_*^{-1}F_*\vec{x}.
+\end{equation}
+
+На рис. 3.10 представлена промежуточная структурная схема, соответствующая уравнениям (3.10.1), (3.10.2) и (3.10.8).
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.9]{images/Fig3_10}
+	\caption{Промежуточная структурная схема}
+\end{figure}
+Для этой схемы справедливы уравнения
+\begin{gather}
+\begin{split}
+	&\dot{\vec{x}}=(A+BB_*^{-1}F_*)\vec{x}+BB_*^{-1}\vec{q};\\
+	&\vec{y}=C\vec{x}.
+\end{split}
+\end{gather}
+Обозначим
+\begin{gather}
+\begin{split}
+	&\underset{\lor}{A}=A+BB_*^{-1}F_*;\\
+	&\underset{\lor}{B}=BB_*^{-1}.
+\end{split}
+\end{gather}
+Теперь (3.10.11) превратится в 
+\begin{equation}
+\begin{cases}
+	\dot{\vec{x}}=\underset{\lor}{A}\vec{x}+\underset{\lor}{B}\vec{q};\\
+	\vec{y}=C\vec{x};
+\end{cases}
+\end{equation}
+а структурная схема промежуточной системы с входным вектором $\vec{q}$ примет вид, представленный на рис. 3.11.
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.9]{images/Fig3_11}
+	\caption{Структурная схема системы относительно входного вектора $\vec{q}$}
+\end{figure}
+С другой стороны, вектор выхода $\vec{y}$ связан с вектором $\vec{q}$ равенством (3.10.7), и поэтому схеме, представленной на рис. 3.11, полностью эквивалентна схема, составленная из $p$ подсистем последовательно включённых интеграторов. Эта схема представлена на рис. 3.12.
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.9]{images/Fig3_12}
+	\caption{Структурная схема объекта, преставленного в виде изолированных подсистем интеграторов}
+\end{figure}
+Общее количество интеграторов не может быть больше $n$, то есть
+\begin{equation*}
+	\sum_{i=1}^{p}m_i\leq n.
+\end{equation*}
+Таким образом, система $\{\underset{\lor}{A},\underset{\lor}{B}\}$ (3.10.13), у которой в качестве входного вектора выбран вектор $\vec{q}$,
+
+а) развязана по каналам, то есть $y_i$ зависит только от $q_i$ для всех значений $i$;
+
+б) имеет $\sum_{i=1}^{p}m_i$ собственных значений, равных нулю.
+
+Теперь систему $\{\underset{\lor}{A},\underset{\lor}{B}\}$ нужно попытаться привести к удобному базису, в котором следует синтезировать обратную связь, реализующую желаемые собственные числа по каждому каналу.
+
+Прежде всего, установим некоторые свойства матриц $\underset{\lor}{A}$ и $\underset{\lor}{B}$. Аналогично (3.10.4) запишем:
+\begin{equation*}
+	y_i^{(m_i)}=C_i\underset{\lor}{A}^{m_i}\vec{x}+C_i\underset{\lor}{A}^{m_i-1}\underset{\lor}{B}\vec{q}+\sum_{v=1}^{m-1}C_i\underset{\lor}{A}^{m_i-1-v}\underset{\lor}{B}q^{(v)}.
+\end{equation*}
+С другой стороны, $y_i^{(m_i)}=q_i$. Отсюда следует:
+\begin{equation}
+	1) C_i\underset{\lor}{A}^{m_i}=0\text{ для всех }i=1,2,\dots,p;
+\end{equation}
+\begin{equation}
+	2) C_i\underset{\lor}{A}^{m_i-1}\underset{\lor}{B}\vec{q}=C_i\underset{\lor}{A}^{m_i-1}
+	\begin{bmatrix}
+		 \underset{\lor}{\vec{b}_1} & \underset{\lor}{\vec{b}_2} & \dots & \underset{\lor}{\vec{b}_p}
+	\end{bmatrix}\cdot
+	\begin{bmatrix}
+		 q_1\\q_1\\\vdots\\q_{ny}
+	\end{bmatrix}=q_i,
+\end{equation}
+откуда
+\begin{equation}
+	C_i\underset{\lor}{A}^{m_i-1}\underset{\lor}{\vec{b}_i}=1;
+\end{equation}
+\begin{equation}
+	C_i\underset{\lor}{A}^{m_i-1}\underset{\lor}{\vec{b}_j}=0,\text{ при } j\neq i;
+\end{equation}
+\begin{equation}
+	3)C_i\underset{\lor}{A}^{m_i-v}\underset{\lor}{\vec{b}_j}=0,\text{ для } v>1 \text{ и для всех } j,.
+\end{equation}
