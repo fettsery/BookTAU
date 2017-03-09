@@ -429,5 +429,248 @@ $k^v$ – коэффициент по командному сигналу.
 	C_i\underset{\lor}{A}^{m_i-1}\underset{\lor}{\vec{b}_j}=0,\text{ при } j\neq i;
 \end{equation}
 \begin{equation}
-	3)C_i\underset{\lor}{A}^{m_i-v}\underset{\lor}{\vec{b}_j}=0,\text{ для } v>1 \text{ и для всех } j,.
+	3)C_i\underset{\lor}{A}^{m_i-v}\underset{\lor}{\vec{b}_j}=0,\text{ для } v>1 \text{ и для всех } j,i.
 \end{equation}
+
+\subsection{Преобразование базиса в пространстве $R^n$}
+Перейдём от исходного базиса [$e$] к новому базису [$f$] с помощью некоторой матрицы преобразования $F_e$.  При выборе базиса [$f$] учтем следующие обстоятельства:
+\begin{itemize}
+\item объект управляем, поэтому ранг матрицы управляемости
+\begin{equation}
+	U=
+	\setcounter{MaxMatrixCols}{20}
+	\begin{bmatrix}
+	\underset{\lor}{\vec{b}_1} & \underset{\lor}{\vec{b}_2} & \dots & \underset{\lor}{\vec{b}_p} & \vdots & \underset{\lor}{A}\underset{\lor}{\vec{b}_1} & \dots & \underset{\lor}{A}\underset{\lor}{\vec{b}_p} & \vdots & \dots & \vdots & \underset{\lor}{A^{n-1}}\underset{\lor}{\vec{b}_1} & \dots & \underset{\lor}{A^{n-1}}\underset{\lor}{\vec{b}_p}
+	\end{bmatrix}
+\end{equation} 
+равен порядку системы;
+\item так как каждый канал этой системы с размерностью $m_i$ управляем, то столбцы
+\begin{equation*}
+	\underset{\lor}{\vec{b}_1}, \underset{\lor}{A}\underset{\lor}{\vec{b}_1}, \dots, \underset{\lor}{A^{m_1-1}}\underset{\lor}{\vec{b}_1}, \dots, \underset{\lor}{\vec{b}_p}, \underset{\lor}{A}\underset{\lor}{\vec{b}_p}, \dots,
+	\underset{\lor}{A^{m_p-1}}\underset{\lor}{\vec{b}_p}
+\end{equation*}
+линейно независимы.
+\end{itemize}
+
+Теперь выберем базис [$f$], соответствующий следующим координатным столбцам:
+\begin{gather}
+\begin{split}
+	&\vec{f}_{e1}=\underset{\lor}{A^{m_1-1}}\underset{\lor}{\vec{b}_1}; \vec{f}_{e2}=\underset{\lor}{A^{m_1-2}}\underset{\lor}{\vec{b}_1};\dots; \vec{f}_{em_1}=\underset{\lor}{\vec{b}_1};\\
+	&\vec{f}_{em_1+1}=\underset{\lor}{A^{m_2-1}}\underset{\lor}{\vec{b}_2}; \vec{f}_{em_1+2}=\underset{\lor}{A^{m_2-2}}\underset{\lor}{\vec{b}_2};\dots; \vec{f}_{em_1+m_2}=\underset{\lor}{\vec{b}_2};\\
+	&\dots\dots\dots\dots\dots\dots\dots\dots\dots\\
+	&\vec{f}_{em_1+\dots+m_{p-1}}=\underset{\lor}{A^{m_p-1}}\underset{\lor}{\vec{b}_p}; \vec{f}_{em_1+\dots+m_{p-2}}=\underset{\lor}{A^{m_p-2}}\underset{\lor}{\vec{b}_p}; \vec{f}_{em_1+\dots+m_p}=\underset{\lor}{\vec{b}_p}.
+\end{split}
+\end{gather}
+Если $\sum_{i=1}^{p}m_i<n$, то оставшуюся часть векторов базиса [$f_{\text{ост}}$] можно выбирать, перебирая оставшиеся столбцы матрицы $U$:
+\begin{equation*}
+	\underset{\lor}{A^{m_1}}\underset{\lor}{\vec{b}_1},	\underset{\lor}{A^{m_1+1}}\underset{\lor}{\vec{b}_1},\dots	\underset{\lor}{A^{v_1-1}}\underset{\lor}{\vec{b}_1}
+\end{equation*}
+до тех пор, пока следующий вектор $	\underset{\lor}{A^v}\underset{\lor}{\vec{b}_1}$ не будет выражаться в виде линейной комбинации всех предыдущих векторов базиса. Далее добавим $\underset{\lor}{A^{m_2}}\underset{\lor}{\vec{b}_2},\underset{\lor}{A^{m_2+1}}\underset{\lor}{\vec{b}_2}$ и так далее, пока число векторов базиса не достигнет числа $n$. Тогда матрица преобразования базиса [$e$] в базис [$f$] будет иметь вид
+\begin{equation*}
+	F_e=
+	\begin{bmatrix}
+	\underset{\lor}{A^{m_1-1}}\underset{\lor}{\vec{b}_1} & \dots & \underset{\lor}{A^{m_1-2}}\underset{\lor}{\vec{b}_1} & \dots & \underset{\lor}{\vec{b}_1} & \dots & \underset{\lor}{A^{m_2-1}}\underset{\lor}{\vec{b}_2} & \dots & \underset{\lor}{\vec{b}_2} & \dots & \underset{\lor}{\vec{b}_p} & [f_\text{ост}]
+	\end{bmatrix}
+\end{equation*}
+
+Рассмотрим вид матрицы $\underset{\lor}{B}$ в базисе [$f$]. Первый столбец этой матрицы, то есть вектор $\vec{b}_1$, совпадает с $m_1$-м столбцом базиса [$f$]; второй столбец матрицы $B$, то есть вектор $\vec{b}_2$, совпадает с $m_1+m_2$-м столбцом базиса [$f$] и так далее. Следовательно,
+\begin{equation}
+	B_e=
+	\begin{bmatrix}
+		\vec{\beta}_1 & 0 & \dots & 0\\
+		0 & \vec{\beta}_2 & \dots & 0\\
+		\dots & \dots & \dots & \dots\\
+		0 & 0 & \dots & \vec{\beta}_p\\
+		0 & 0 & \dots & 0
+	\end{bmatrix},
+\end{equation}
+где
+\begin{equation}
+	\vec{\beta}_i=
+	\begin{rcases}
+	\begin{bmatrix}
+		0\\0\\\dots\\0\\1
+	\end{bmatrix}
+	\end{rcases}m_i\text{ строк}
+\end{equation}
+Теперь обратим внимание на матрицу $C$. В соответствии с (3.6.8)
+\begin{equation}
+	C_f=CF_e=
+	\begin{bmatrix}
+		C_1\\C_2\\\vdots\\C_p
+	\end{bmatrix}\cdot
+	\begin{bmatrix}
+		\vec{f}_{e_1} & \vec{f}_{e_2} & \dots & \vec{f}_{e_n}
+	\end{bmatrix}=
+	\begin{bmatrix}
+		C_1\vec{f}_{e_1} & \dots & C_1\vec{f}_{e_n}\\
+		C_2\vec{f}_{e_1} & \dots & C_2\vec{f}_{e_n}\\
+		\dots & \dots & \dots\\
+		C_p\vec{f}_{e_1} & \dots & C_p\vec{f}_{e_n}\\
+	\end{bmatrix}
+\end{equation}
+Из этого равенства с учётом (3.10.14), (3.10.16), (3.10.17)  получим
+\begin{equation}
+	C_f=
+	\begin{bmatrix}
+		s_1 & 0 & \dots & 0 & 0\\
+		0 & s_2 & \dots & 0 & 0\\
+		\vdots & \vdots & \vdots & \vdots & \vdots\\
+		0 & 0 & \dots & s_p & 0\\
+	\end{bmatrix}
+\end{equation}
+где
+\begin{equation}
+	s_i=
+	\underbrace{\begin{bmatrix}
+		1 & 0 & \dots & 0
+	\end{bmatrix}}_{m_i}.
+\end{equation}
+
+Наконец, займемся  матрицей $\underset{\lor}{A_f}$. Прежде всего, рассмотрим важную интерпретацию элементов матрицы $A_f$. В соответствии с (3.6.8)
+\begin{equation*}
+	A_f=F_e^{-1}A_eF_e,
+\end{equation*}
+поэтому
+\begin{equation}
+	F_eA_f=A_eF_e.
+\end{equation}
+Левую часть этого равенства можно расписать следующим образом:
+\begin{gather*}
+\begin{split}
+	&F_eA_f=\begin{bmatrix}
+	\vec{f}_{e1} & \vec{f}_{e2} & \dots & \vec{f}_{en}
+	\end{bmatrix}\cdot
+	\begin{bmatrix}
+		a^f_{11} & a^f_{12} & \dots & a^f_{1n}\\
+		\vdots & \vdots & \vdots & \vdots\\
+		a^f_{n1} & a^f_{1n2} & \dots & a^f_{nn}\\
+	\end{bmatrix}\\
+	&=\begin{bmatrix}
+		a^f_{11}\vec{f}_{e_1}+\dots+a^f_{n1}\vec{f}_{e_n} & a^f_{12}\vec{f}_{e_1}+\dots+a^f_{n2}\vec{f}_{e_n} & \dots & a^f_{1n}\vec{f}_{e_1}+\dots+a^f_{nn}\vec{f}_{e_n}
+	\end{bmatrix}.
+\end{split}
+\end{gather*}
+С другой стороны:
+\begin{equation*}
+	A_eF_e=[A_e\vec{f}_{e1}\dots A_e\vec{f_{e_n}}].
+\end{equation*}
+Таким образом, получаем
+\begin{equation}
+	A_e\vec{f}_{ei}=a^f_{1i}\vec{f}_{e1}+a^f_{2i}\vec{f}_{e2}+\dots+a^f_{ni}\vec{f}_{en}
+\end{equation}
+Это означает, что элементы $i$-го столбца матрицы $\underset{\lor}{A_f}$
+\begin{equation*}
+	\vec{a}_i^f=\begin{bmatrix}
+	a^f_{1i}\\a^f_{2i}\\\dots\\a^f_{ni}
+	\end{bmatrix}
+\end{equation*}
+являются коэффициентами разложения произведения $\underset{\lor}{A}\vec{f}_{ei}\equiv\underset{\lor}{A_e}\vec{f}_{ei}$ по координатным векторам $\vec{f}_{e1},\vec{f}_{e2},\dots,\vec{f}_{en}$.
+Используя (3.10.20), сопоставим произведения ${A_e}\vec{f}_{ei}$ с координатными столбцами векторов базиса [$f$]:
+\begin{gather}
+\begin{split}
+	&\underset{\lor}{A}\vec{f}_{e1}=\underset{\lor}{A^{m_1}}\underset{\lor}{\vec{b}_1};\\
+	&\underset{\lor}{A}\vec{f}_{e2}=\underset{\lor}{A^{m_1-1}}\underset{\lor}{\vec{b}_1}=\vec{f}_{e1};\\
+	&\underset{\lor}{A}\vec{f}_{e3}=\underset{\lor}{A^{m_1-2}}\underset{\lor}{\vec{b}_1}=\vec{f}_{e2};\\
+	&\dots\dots\dots\dots\dots\dots
+\end{split}
+\end{gather}
+
+Так как векторы $\underset{\lor}{A}f_{e1}$, $\underset{\lor}{A}f_{em_1+1}$ и т. д. не совпадают ни с одним из собственных векторов с номерами от 1 до $n-\sum_{i=1}^{p}m_i-1$, то в соответствующих столбцах матрицы $\underset{\lor}{A_f}$ на позициях строк с номерами, большими $p$, могут находиться ненулевые элементы. Такие ячейки матрицы помечены символом "$\times$". Кроме того, на данном этапе нет смысла рассматривать столбцы этой матрицы с номерами, большими $p$. В результате получаем выражение для матрицы $\underset{\lor}{A}$ в базисе [$f$]:	
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.9]{images/Fig3_12_1}
+\end{figure}
+Эту же матрицу удобнее записать в блочном виде:
+\begin{equation}
+	\underset{\lor}{A}_f=\begin{bmatrix}
+	A_{11} & 0 & \dots & 0 & A_{10}\\
+	0 & A_{22} & \dots & 0 & A_{20}\\
+	\vdots & \vdots & \vdots & \vdots & \vdots\\
+	0 & 0 & \dots & A_{pp} & A_{p0}\\
+	A_{01} & A_{02} & \dots & A_{0p} & A_{00}\\
+	\end{bmatrix}.
+\end{equation}
+
+Разобьём вектор состояния $\vec{x}$ на систему $(p+1)$ частных векторов и обозначим
+\begin{equation}
+	\vec{x}_f=\begin{bmatrix}
+	\vec{z}_1\\\vec{z}_2\\\vdots\vec{z}_p\\\vec{z}_0\\
+	\end{bmatrix},
+\end{equation}
+где $\vec{z}_i$ имеет размерность [$m_i\times1$]. Тогда уравнения (3.10.13) в базисе [$f$] примут вид
+\begin{equation*}
+	\begin{bmatrix}
+	\dot{\vec{z}}_1 \\ \dot{\vec{z}}_2 \\ \vdots \\ \dot{\vec{z}}_p \\ \dot{\vec{z}}_0
+	\end{bmatrix}=
+	\begin{bmatrix}
+	A_{11} & 0 & \dots & 0 & A_{10}\\
+	0 & a_{22} & \dots & 0 & A_{20}\\
+	\vdots & \vdots & \vdots & \vdots & \vdots\\
+	0 & 0 & \dots & A_{pp} & A_{p0}\\
+	A_{01} & A_{02} & \dots & A_{0p} & A_{00}
+	\end{bmatrix} * 
+	\begin{bmatrix}
+	\vec{z}_1 \\ \vec{z}_2 \\ \vdots \\ \vec{z}_p \\ \vec{z}_0   
+	\end{bmatrix}+
+	\begin{bmatrix}
+	\vec{\beta}_1 & 0 & \dots & 0\\
+	0 & \vec{\beta}_2 & \dots & 0\\
+	\vdots & \vdots & \vdots & \vdots\\
+	0 & 0 & \dots & \vec{\beta}_p\\
+	0 & 0 & \dots & 0\\
+	\end{bmatrix} * 
+	\begin{bmatrix}
+	q_1 \\ q_2 \\ \vdots \\ \vdots \\ q_p
+	\end{bmatrix};
+\end{equation*}
+\begin{equation}
+	\begin{bmatrix}
+	y_1 \\ y_2 \\ \vdots \\ y_p
+	\end{bmatrix}=
+	\begin{bmatrix}
+	s_1 & 0 & \dots & 0 & 0\\
+	0 & s_2 & \dots & 0 & 0\\
+	\vdots & \vdots & \vdots & \vdots & \vdots\\
+	0 & 0 & \dots & s_p & 0
+	\end{bmatrix}*
+	\begin{bmatrix}
+	\vec{z}_1 \\ \vec{z}_2 \\ \vdots \\ \vec{z}_p \\ \vec{z}_0   
+	\end{bmatrix}
+\end{equation}
+Отсюда следуют уравнения для частных подсистем:
+\begin{gather}
+\begin{split}
+	&\dot{\vec{z}}_i=A_{ii}\vec{z}_i+A_{i0}\vec{z}_0+\vec{\beta}_iq_i;\\
+	&y_i=s_i\vec{z}_i, (i=1,2,\dots,p);
+\end{split}
+\end{gather}
+\begin{equation}
+\dot{\vec{z}}_0=\sum_{v=1}^{p}A_{0v}\vec{z}_v+A_{00}\vec{z}_0.
+\end{equation}
+Раскроем систему дифференциальных уравнений для $i$-й подсистемы:
+\begin{equation}
+\begin{cases}
+\dot{z}_{i1}=z_{i2}+a_1^{i10}\vec{z}_0=z_{i2}+g{i1};\\
+\dot{z}_{i2}=z_{i3}+g_{i2};\\
+\dots\dots\dots\dots\dots\dots\\
+\dot{z}_{i,m_i-1}=z_{i,m_i}+g_{i,m_i-1};\\
+\dot{z}_{i,m_i}=g_{i,m_i}+q_i;
+\end{cases}
+\end{equation}
+\begin{equation*}
+\begin{cases}
+y_i=z_{i1},
+\end{cases}
+\end{equation*}
+где $a_1^{i10}$ - первая строка матрицы $A_{i0}$. Такой подсистеме соответствует структурная схема, представленная на рис. 3.13.
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.9]{images/Fig3_13}
+	\caption{Структурная схема частотной подсистемы}
+\end{figure}
+Из сопоставления этой схемы со схемой, приведённой на рис. 3.12, следует:
+a) $z_{i1}=y_i$; $z_{iv}=y_i^{(v)}$ при $v>1$;
+б) $q_{iv}=0$ и $A_{v0}=0$ для $v=1,2,\dots,p$.
+
+Таким образом,  выходы интеграторов частных подсистем, показанных на рис. 3.12, совпали с координатами вектора $\vec{x}$ в базисе [$f$].  Кроме того, все  блочные матрицы $A_{00},A_{10},\dots,A_{p0}$ в (3.10.29)- нулевые. 
